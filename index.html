@@ -1,86 +1,342 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capitol Cube Championship</title>
+    <title>Capitol Cube Championship 2026</title>
     <style>
-        body {
+        :root {
             --easygoing-gray: #595959;
             --capitol-blue: #0056b3;
             --capitol-red: #e71837;
-            font-family: futura;
-            line-height: 1.6;
-            margin: 20px;
-            color: var(--easygoing-gray);
-            font-size: 1.33em;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
         }
+
+        body {
+            font-family: 'Futura', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--easygoing-gray);
+            background-color: var(--bg-color);
+            font-size: 1.1em;
+        }
+
         h1, h2, h3 {
             color: var(--capitol-blue);
         }
-        h1 {
-            text-align: center;
-            border-bottom: 2px var(--capitol-blue);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+        a {
+            color: var(--capitol-blue);
+            text-decoration: none;
+            font-weight: bold;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100%;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .footer {
-            text-align: center;
-            margin-top: auto;
-            font-size: 0.66em;
-            opacity: 0.45;
-        }
-        .accent-red {
+
+        a:hover {
             color: var(--capitol-red);
         }
-        .accent-blue {
-            color: var(--capitol-blue);
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
         }
-        .disclaimer {
-            margin-top: 0em;
-        }
-        .lede {
-            margin-top: 2em;
-        }
-        .largeButton {
-            border: var(--capitol-blue);
-            border-radius: 5px;
-            display: block;
-            padding: 1em 1.5em;
+
+        /* Header Section */
+        .header {
             text-align: center;
-            transition: background .25s;
+            padding: 40px 20px;
+            background-color: var(--card-bg);
+            border-bottom: 4px solid var(--capitol-red);
+        }
+
+        .header img {
+            max-width: 300px;
+            width: 100%;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        .lede {
+            font-size: 1.33em;
+            margin-bottom: 20px;
+        }
+
+        .accent-red { color: var(--capitol-red); }
+        .accent-blue { color: var(--capitol-blue); }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .largeButton {
+            background-color: var(--card-bg);
+            color: var(--capitol-blue);
+            border: 2px solid var(--capitol-blue);
+            border-radius: 5px;
+            padding: 0.75em 1.5em;
+            text-align: center;
+            transition: all 0.25s;
+        }
+
+        .largeButton.primary {
+            background-color: var(--capitol-blue);
+            color: #ffffff;
+        }
+
+        .largeButton:hover {
+            background-color: var(--capitol-blue);
+            color: #ffffff;
+            border-color: var(--capitol-blue);
+        }
+
+        .largeButton.primary:hover {
+            background-color: var(--capitol-red);
+            border-color: var(--capitol-red);
+        }
+
+        /* Sections */
+        section {
+            margin: 50px 0;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            border-bottom: 2px solid var(--capitol-blue);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Schedule Grid */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .schedule-time {
+            font-weight: bold;
+            color: var(--capitol-red);
+            text-align: right;
+            padding-right: 15px;
+            border-right: 2px solid #eaeaea;
+        }
+
+        .schedule-event {
+            padding-left: 10px;
+        }
+
+        /* Cube List */
+        .cube-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .cube-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            padding: 15px;
+            background: var(--bg-color);
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .cube-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-color: var(--capitol-blue);
+        }
+
+        .cube-card h3 {
+            color: var(--capitol-blue);
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .cube-card:hover h3 {
+            color: var(--capitol-red);
+        }
+
+        .cube-author {
+            font-size: 0.9em;
+            color: var(--easygoing-gray);
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 25px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: var(--capitol-blue);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.8em;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
-    <div class="container" style="">
-        <div class="header" style="text-align: center;">
-            <div style="width: 100%; max-width: 300px; margin: auto; overflow: hidden;">
-                <!-- This weird little hack is to crop a few pixels off of the top, so we don't get a weird gray bar -->
-                <img src="capital_city_cube.png" alt="Capitol Cube Championship" style="width: 100%; display: block; margin: auto; position: relative; top: -2px;">
-            </div>
+
+    <div class="header">
+        <div style="width: 100%; max-width: 300px; margin: auto; overflow: hidden;">
+            <img src="capital_city_cube.png" alt="Capitol Cube Championship" style="position: relative; top: -2px;">
         </div>
         <div class="lede">
-            <p style="text-align: center; margin-bottom: 30px;">The Premier <span class="accent-red">Magic: The Gathering</span> Cube tournament in <span class="accent-blue">Washington, DC</span></p>
+            The Premier <span class="accent-red">Magic: The Gathering</span> Cube tournament in <span class="accent-blue">Washington, DC</span>
         </div>
-        <div class="disclaimer">
-            <h3>Details</h3>
-            <p style="text-align: left;"><b>When:</b> September 19, 2026</p>
-            <p style="text-align: left;"><b>Where:</b> Hilton Garden Inn Washington/Georgetown (<a href="https://maps.app.goo.gl/FZGRg4RjsNXq8fqu8" target="_blank">2201 M St NW, Washington, DC</a>)</p>
-            <p style="text-align: left;"><b>Why:</b> To promote cube and community in the DC-area, raise money for charity, and have fun cubing!</p>
-            <p style="text-align: left;"><b>How:</b> <a href="https://donate.stripe.com/28EaEW836bTu4cbb4XbAs02" target="_blank">Purchase tickets here.</a> Suggested donation of $70, but any additional amount will go directly to this year's charity!</p>
-            <p style="text-align: left;"><b>Have questions?</b> <a href="https://discord.gg/fT2vUxeXzH" target="_blank">Join our Discord!</a></p>
-        </div>
-        <div class="footer">
-            <p>Organized by Capitol Cube Corporation, a 501(c)(3) nonprofit.</p>
+        
+        <div class="button-group">
+            <a href="https://donate.stripe.com/28EaEW836bTu4cbb4XbAs02" target="_blank" class="largeButton primary">Buy Tickets ($70)</a>
+            <a href="https://discord.gg/fT2vUxeXzH" target="_blank" class="largeButton">Join our Discord</a>
         </div>
     </div>
-    </body>
+
+    <div class="container">
+        
+        <section id="details">
+            <h2>Event Details</h2>
+            <p><strong>When:</strong> Saturday, September 19th, 2026</p>
+            <p><strong>Where:</strong> Hilton Garden Inn Washington/Georgetown (<a href="https://maps.app.goo.gl/FZGRg4RjsNXq8fqu8" target="_blank">2201 M St NW, Washington, DC</a>)</p>
+            <p><strong>Charity:</strong> All proceeds from the tournament will be donated to the <a href="https://www.secondlookdc.org/" target="_blank">Second Look Project</a>, which fights extreme sentencing and mass incarceration by providing direct representation, advocacy, and reentry support for individuals sentenced to lengthy prison terms in DC.</p>
+        </section>
+
+        <section id="schedule">
+            <h2>Tournament Schedule</h2>
+            <div class="schedule-grid">
+                <div class="schedule-time">8:30 AM</div>
+                <div class="schedule-event">Doors Open</div>
+                
+                <div class="schedule-time">9:30 AM</div>
+                <div class="schedule-event">Draft 1 Begins</div>
+                
+                <div class="schedule-time">1:30 PM</div>
+                <div class="schedule-event">Draft 1 Ends (Lunch Break)</div>
+                
+                <div class="schedule-time">2:30 PM</div>
+                <div class="schedule-event">Draft 2 Begins</div>
+                
+                <div class="schedule-time">6:30 PM</div>
+                <div class="schedule-event">Draft 2 Ends</div>
+                
+                <div class="schedule-time">7:00 PM</div>
+                <div class="schedule-event">Top 8 Draft Begins</div>
+                
+                <div class="schedule-time">7:30 PM</div>
+                <div class="schedule-event">Open Cubing Begins</div>
+                
+                <div class="schedule-time">10:30 PM</div>
+                <div class="schedule-event">Top 8 Draft Ends</div>
+                
+                <div class="schedule-time">11:00 PM</div>
+                <div class="schedule-event">Venue Closes</div>
+            </div>
+        </section>
+
+        <section id="cubes">
+            <h2>Announced Cubes</h2>
+            <p>Players can rank cubes by preference in Hedron Network to influence which cube pod they are assigned to in each round.</p>
+            <div class="cube-list">
+                <a href="https://cubecobra.com/cube/list/paperbacon" target="_blank" class="cube-card">
+                    <h3>The Bacon Vintage Cube</h3>
+                    <div class="cube-author">by @iluvbacon610</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/conversion" target="_blank" class="cube-card">
+                    <h3>The Conversion Cube</h3>
+                    <div class="cube-author">by Alex Matveyenko</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/DangerZone" target="_blank" class="cube-card">
+                    <h3>DANGER ZONE</h3>
+                    <div class="cube-author">by WarrenFish & Jeremy Conlin</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/fnf" target="_blank" class="cube-card">
+                    <h3>Fast and Friendly Cube</h3>
+                    <div class="cube-author">by iammoon</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/meaning" target="_blank" class="cube-card">
+                    <h3>The Kuleshov Cube</h3>
+                    <div class="cube-author">by Brendan Hagan</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/Pirates" target="_blank" class="cube-card">
+                    <h3>Legacy of Bloodwake Atoll</h3>
+                    <div class="cube-author">by Shoup</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/lmte" target="_blank" class="cube-card">
+                    <h3>Limited Masters</h3>
+                    <div class="cube-author">by Patrick Hahn</div>
+                </a>
+                <a href="https://cubecobra.com/cube/list/itjusttakessometime" target="_blank" class="cube-card">
+                    <h3>The Middle School</h3>
+                    <div class="cube-author">by Alex</div>
+                </a>
+                <a href="https://cubecobra.com/cube/overview/penrose" target="_blank" class="cube-card">
+                    <h3>The Penrose Cube</h3>
+                    <div class="cube-author">by Lincoln</div>
+                </a>
+                <div class="cube-card">
+                    <h3>[REDACTED]</h3>
+                    <div class="cube-author">by Lincoln</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How will the event work?</div>
+                <p>There will be two cube drafts that will affect your Swiss ranking, feeding into a Top 8 draft in the evening. Players trophying (3-0) a pod will receive a bonus match point that will also contribute to their Swiss ranking. During the Top 8 draft, there will be open drafting that does not affect tournament standings.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What will entry and prizing look like?</div>
+                <p>Entry is $70. The event will cap at 96 players. Prizing will include but is not limited to:</p>
+                <ul>
+                    <li><strong>Champion:</strong> Top 8 prizing and a special altered card commemorating the tournament (details to follow)</li>
+                    <li><strong>Top 8:</strong> Shiny trophy pin</li>
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I get to the event?</div>
+                <p>The venue is just a short walk from both the Foggy Bottom/GWU and Dupont Circle Metro stations.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Sounds great, where do I sign up?</div>
+                <p>Tickets can be purchased <a href="https://donate.stripe.com/28EaEW836bTu4cbb4XbAs02" target="_blank">here</a>.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer">
+        <p>Organized by Capitol Cube Corporation, a 501(c)(3) nonprofit.</p>
+    </div>
+
+</body>
 </html>
